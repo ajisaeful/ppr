@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="static/css/style.css">
+    
+    <!-- Chabot CSS -->
+    <link rel="stylesheet" href="static/css/chat.css">
+    
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>SafetyCheck</title>
+  </head>
+  <body>   
+    <div class="site-navbar-wrap">
+      <div class="site-navbar site-navbar-target js-sticky-header">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-2">
+              <img src="static/images/logo.png" width="30" height="30" alt="Logo">
+              <h2>SafetyCheck</h2>
+            </div>
+            <div class="col-10">
+              <nav class="site-navigation text-right" role="navigation">
+                <div class="container">
+                  <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+
+                  <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/deteksi" class="nav-link">Detection</a></li>
+                    <li><a href="/about" class="nav-link">About</a></li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero" style="background-image: url('static/images/Detection.png');">
+        <div class="button-wrapper-deteksi">
+            <div class="herofont">
+            <h1 class="fonts" style="font-weight: bold">Object Detection</h1>
+            <h4 class="fonts-detek">Unggah gambar atau menggunakan webcam secara real time untuk mengidentifikasi <br> dan menentukan lokasi dari Alat Pelindung Diri (APD) yang digunakan.</h4>
+            </div>            
+          </div>
+      </div>
+      <div class="container-detection">
+        <div class="side-nav">
+          <ul class="sidebar-nav">
+              <li class="nav-item active">
+                  <a class="nav-link active" href="#">
+                      <i class="material-icons" style="vertical-align: middle;">image</i>
+                      <span style="vertical-align: middle; margin-left:10px;">Upload Images</span>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/deteksi_video">
+                      <i class="material-icons" style="vertical-align: middle;">movie</i>
+                      <span style="vertical-align: middle; margin-left:10px;">Upload Video</span>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/deteksi_webcam">
+                      <i class="material-icons" style="vertical-align: middle;">videocam</i>
+                      <span style="vertical-align: middle; margin-left:10px;">Webcam</span>
+                  </a>
+              </li>
+          </ul>
+      </div>
+        <div class="content-detection">
+            <div class="upload-image">
+                <form method="POST" enctype="multipart/form-data">
+                    <h3>Upload Image</h3>
+                    <input type="file" name="image" accept="image/*">
+                    <input type="submit" value="Deteksi Objek">
+                </form>
+            </div>
+            <div class="result-image">
+                {% if result_path %}
+                    <h3>Result Image</h3>
+                    <img src="{{ url_for('static', filename='results/' + result_path) }}" alt="Gambar Hasil" style="max-width: 500px; max-height: 500px;">
+                {% endif %}
+            </div>
+        </div>
+      </div>
+      
+      
+      
+    <!-- Chatbot Start -->
+      <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+               <div class="chatbox__image--header">
+                <img src="static/images/safebot.png" alt="Logo Safebot">
+               </div>
+               <div class="chatbox__content--header">
+                <h5 class="chatbox__heading--header">Safebot</h5>
+               </div>
+            </div>
+            <div class="chatbox__messages" id="chatbot">
+                <div id="conversation">
+                    <!-- <div class="messages__item messages__item--visitor">
+                        Hai!
+                    </div> -->
+                    <div class="messages__item messages__item--operator">
+                        Halo, aku Safebot!👋 Ada yang mau ditanyakan?
+                    </div>
+                </div>
+            </div>
+            <form id="input-form" class="chatbox__footer">
+                <input id="input-field" type="text" placeholder="Tulis pesanmu disini" required>
+                <button id="submit-button" type="submit">
+                  <img src="static/images/send.svg" alt="" height="30px" width="30px"/>
+                </button>
+              </form>
+        </div>
+        <a href="#" class="chatbox__button" role="button">
+          <img src="static/images/livechat.png" alt="Live Chat" />
+        </a> 
+    </div>
+    <!-- Chabot End -->
+    
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.sticky.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="static/js/slider.js"></script>
+    <script src="static/js/deteksi.js"></script>
+    <script src="static/js/Chat.js"></script>
+    <script src="static/js/app.js"></script>
+  </body>
+  <footer class="footer">
+    <div class="footer-left">
+      <figure>
+        <img src="static/images/logo.png" alt="gambar footer">
+        <p><a href="https://www.example.com">safetycheck@gmail.com</a></p>
+      </figure> 
+    </div>
+    <div class="footer-right">
+      <figure>
+        <p >Support By:</p>
+        <a href="https://orbitfutureacademy.id/"><img src="static/images/orbit.png" alt="gambar1"></a>
+        <a href="https://ittelkom-pwt.ac.id/"><img src="static/images/fayza.png" alt="gambar2"></a>
+        <a href="https://www.amikompurwokerto.ac.id/"><img src="static/images/aji.png" alt="gambar3"></a>
+        <a href="https://www.ukdw.ac.id/"><img src="static/images/ardi.png" alt="gambar4"></a>
+        <a href="https://unmaha.ac.id/"><img src="static/images/kinanti.png" alt="gambar5"></a>
+      </figure>   
+    </div>
+    <p class="footer-copyright">
+      &copy; 2023 Broyden1. All rights reserved.
+    </p>
+  </footer>  
+</html>
